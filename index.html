@@ -58,23 +58,30 @@
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.03em; font-size: 18px; }
 
   .brand-mark {
-    display: grid;
-    place-items: center;
     width: 36px; height: 36px;
-    border-radius: 11px;
-    background: var(--ink);
-    color: #fff;
+    border-radius: 9px;
+    object-fit: cover;
+    display: block;
   }
 
-  .topbar nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+  .topbar nav {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 1 1 280px;
+    min-width: 0;
+  }
 
   .topbar nav a {
-    padding: 7px 12px;
+    padding: 7px 8px;
     border-radius: 999px;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--ink-soft);
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .topbar nav a:hover { background: var(--line-soft); color: var(--ink); }
@@ -275,6 +282,8 @@
   }
 
   footer strong { color: var(--ink); }
+  footer a { font-weight: 600; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
 
   .hidden { display: none !important; }
 
@@ -293,15 +302,11 @@
 
 <div class="topbar">
   <span class="brand">
-    <span class="brand-mark">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 19h18L3 5z" />
-        <path d="M7 19v-2M10 19v-3M13 19v-2" />
-      </svg>
-    </span>
+    <img class="brand-mark" src="img/logo.png" alt="" />
     GEOBOARD
   </span>
   <nav>
+    <a href="#nouveautes">Nouveautés</a>
     <a href="#ecriture">Écriture</a>
     <a href="#geometrie">Géométrie</a>
     <a href="#maths">Maths</a>
@@ -309,6 +314,7 @@
     <a href="#fichiers">Fichiers</a>
     <a href="#reglages">Réglages</a>
     <a href="#raccourcis">Raccourcis</a>
+    <a href="#confidentialite">Confidentialité</a>
   </nav>
 </div>
 
@@ -340,6 +346,7 @@
   <aside class="side">
     <input class="search" id="q" type="search" placeholder="Rechercher une fonction…" aria-label="Rechercher une fonctionnalité" />
     <ol id="toc">
+      <li><a href="#nouveautes">Nouveautés</a></li>
       <li><a href="#demarrer">Démarrer un document</a></li>
       <li><a href="#ecriture">Écrire et effacer</a></li>
       <li><a href="#geometrie">Instruments de géométrie</a></li>
@@ -355,24 +362,68 @@
       <li><a href="#reglages">Réglages</a></li>
       <li><a href="#raccourcis">Raccourcis</a></li>
       <li><a href="#technique">Sous le capot</a></li>
+      <li><a href="#confidentialite">Confidentialité</a></li>
     </ol>
   </aside>
 
   <main>
 
     <!-- ============ DÉMARRER ============ -->
+    <section id="nouveautes">
+      <h2>Nouveautés</h2>
+      <p class="intro">
+        Ce que la version actuelle change pour la classe, sur iPad, Mac et Windows.
+      </p>
+      <div class="grid">
+        <div class="card" data-k="nouveautes barre texte formule couleur fond mot police zoom trackpad">
+          <h3>Écriture</h3>
+          <ul>
+            <li>La barre de texte et de formule est sous la barre du haut. Elle ne cache ni les onglets, ni le champ Lien.</li>
+            <li>Le texte et les formules restent en place quand on déplace ou zoome la page, et s’écrivent là où l’on a cliqué.</li>
+            <li>Un clic propose Déplacer, Dupliquer, Couleur et Supprimer. Un double clic ouvre la modification.</li>
+            <li>On peut changer la couleur d’un seul mot. La dernière couleur est mémorisée, avec une couleur par défaut.</li>
+            <li><b>Couleur fond</b> ouvre toutes les couleurs du texte, les pastels, et une couleur libre.</li>
+            <li>Les polices de l’ordinateur s’ajoutent à Sans, Serif, Mono et Titre. La taille des icônes de la barre se règle : Normale, Grande ou Très grande.</li>
+          </ul>
+        </div>
+        <div class="card" data-k="nouveautes largeur hauteur zoom trackpad pincement page blanche equerre compas menus francais">
+          <h3>Page et outils</h3>
+          <ul>
+            <li><b>Largeur</b>, <b>Hauteur</b> et le zoom sont à côté d’Enregistrer.</li>
+            <li>Sur le trackpad du Mac, deux doigts font défiler la page et le pincement zoome.</li>
+            <li>Une page blanche s’ajoute après la page en cours. Sur un PDF, elle se place après le document.</li>
+            <li>L’équerre apparaît au centre de la zone affichée.</li>
+            <li>Le rayon du compas est écrit sur l’instrument. Une croix sur la charnière le range, comme sur l’équerre.</li>
+            <li>Les menus du Mac sont en français.</li>
+          </ul>
+        </div>
+        <div class="card" data-k="nouveautes pdf export texte formule espaces crayon remplacer fichier">
+          <h3>Export PDF</h3>
+          <ul>
+            <li>Le texte, les espaces et les formules correspondent à l’écran.</li>
+            <li>Le trait de crayon est lisse, comme sur la page.</li>
+            <li>Si un PDF porte déjà le même nom, le nouveau fichier le remplace.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section id="demarrer">
       <h2>Démarrer un document</h2>
       <p class="intro">
         L'accueil ne garde aucune liste de fichiers : rien n'est mémorisé à votre place.
-        Deux portes d'entrée seulement, et vos documents restent là où vous les rangez.
+        Trois portes d'entrée, et vos documents restent là où vous les rangez.
       </p>
       <div class="grid">
-        <div class="card wide" data-k="accueil ecran demarrage deux cartes credits jonathan valenzano">
+        <div class="card wide" data-k="accueil ecran demarrage trois cartes nouveau ouvrir importer pdf credits jonathan valenzano logo">
           <h3><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span>L'accueil</h3>
+          <p>
+            Trois cartes : <b>Nouveau fichier</b>, <b>Ouvrir un fichier</b>, et
+            <b>Importer un PDF</b> pour annoter un sujet dès l'ouverture.
+          </p>
           <figure class="shot">
             <a href="img/home.png" target="_blank" rel="noopener">
-              <img src="img/home.png" alt="Écran d'accueil de GEOBOARD avec les cartes Nouveau fichier et Ouvrir un fichier" />
+              <img src="img/home.png" alt="Écran d'accueil de GEOBOARD : Nouveau fichier, Ouvrir un fichier et Importer un PDF" />
             </a>
           </figure>
         </div>
@@ -516,8 +567,9 @@
             <b>poser la main sur l'écran</b> comme sur un cahier sans que le trait saute.
           </p>
           <p>
-            Deux doigts font le zoom et le déplacement ; si le stylet arrive pendant que les
-            doigts sont posés, c'est le stylet qui gagne.
+            Sur le trackpad du Mac, <b>deux doigts font défiler</b> la page et le
+            <b>pincement zoome</b>. Sur l'écran tactile, le pincement zoome aussi.
+            Si le stylet arrive pendant que les doigts sont posés, c'est le stylet qui gagne.
           </p>
         </div>
 
@@ -549,14 +601,16 @@
           </p>
           <ul>
             <li><b>Le corps</b> déplace l'équerre, <b>l'anneau intérieur</b> la fait tourner</li>
+            <li>La <b>croix</b> au centre de l'équerre la range</li>
             <li>Le corps n'est jamais une surface d'écriture : seuls les <b>bords</b> tracent</li>
             <li><b>Transparence réglable</b> de 15 à 100 %, avec trois réglages rapides</li>
+            <li>Quand on la demande, elle apparaît au <b>centre de la zone affichée</b>, même si la page est zoomée ailleurs</li>
           </ul>
           <figure class="shot">
             <a href="img/set-square.png" target="_blank" rel="noopener">
-              <img src="img/set-square.png" alt="L'équerre type Aristo posée sur la feuille : bande rapporteur jaune, graduations millimétriques, lignes parallèles cotées et anneau de rotation" />
+              <img src="img/set-square.png" alt="L'équerre type Aristo : bande rapporteur jaune, graduations, anneau de rotation et croix pour la ranger" />
             </a>
-            <figcaption>Bande rapporteur jaune à double lecture, graduations mm, lignes parallèles cotées et anneau de rotation.</figcaption>
+            <figcaption>Bande rapporteur jaune, graduations, anneau de rotation, et la croix qui range l'équerre.</figcaption>
           </figure>
           <figure class="shot tall">
             <a href="img/set-square-opacity.png" target="_blank" rel="noopener">
@@ -575,26 +629,28 @@
           </p>
         </div>
 
-        <div class="card" data-k="compas cercle arc rayon cm pointe seche branche tete retournement">
-          <h3><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 6v3M12 9l-5 11M12 9l5 11"/><circle cx="12" cy="13" r="7" stroke-dasharray="3 3"/></svg></span>Compas réaliste</h3>
+        <div class="card" data-k="compas cercle arc rayon cm pointe seche collier tete croix fermer charniere">
+          <h3><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 6v3M12 9l-5 11M12 9l5 11"/></svg></span>Compas réaliste</h3>
           <p>
             Dessiné comme l'instrument : tête moletée, branche à pointe sèche, branche
-            portant un crayon jaune. Chaque partie a son rôle, et nulle part ailleurs il ne
-            réagit — la pointe sèche reste plantée.
+            portant un crayon jaune. Chaque partie a son rôle. La pointe sèche reste plantée,
+            et le compas ne se retourne plus tout seul quand le crayon passe à la verticale.
           </p>
           <ul>
             <li><b>La tête</b> déplace tout le compas</li>
-            <li><b>La branche du crayon</b> ouvre et ferme, avec le rayon affiché en cm en direct</li>
+            <li><b>Le collier</b> du crayon ouvre et ferme. Le rayon, en cm, est écrit <b>sur l'ouverture</b></li>
+            <li><b>Les branches</b> font tourner autour de la pointe sèche, sans changer l'ouverture</li>
             <li><b>La pointe du crayon</b> trace, à <b>rayon verrouillé</b> : cercle complet à 360° possible</li>
-            <li>Un point noir marque le centre à la fin du tracé, pour le retrouver</li>
+            <li>Un point noir marque le centre, pour le retrouver</li>
+            <li>La <b>croix</b> sur la charnière range le compas, comme la croix de l'équerre</li>
           </ul>
           <figure class="shot">
             <a href="img/compass.png" target="_blank" rel="noopener">
-              <img src="img/compass.png" alt="Le compas posé sur la feuille : tête moletée, pointe sèche, crayon jaune, rayon coté 4,0 cm et cercle de visée" />
+              <img src="img/compass.png" alt="Le compas posé sur la feuille : tête moletée, croix de fermeture, pointe sèche, crayon jaune et rayon 4,0 cm écrit sur l'ouverture" />
             </a>
-            <figcaption>Le rayon s'affiche en cm pendant le réglage, avec le cercle de visée.</figcaption>
+            <figcaption>Le rayon est écrit sur l'ouverture. La croix de la charnière range le compas.</figcaption>
           </figure>
-          <div class="tags"><span class="tag">2<sup>e</sup> clic sur l'icône = compas rangé</span></div>
+          <div class="tags"><span class="tag">croix = compas rangé</span></div>
         </div>
 
         <div class="card" data-k="zoom taille reelle 100% millimetres mm vraie grandeur echelle molette pincement">
@@ -604,8 +660,8 @@
             fait 1 mm à l'écran : les mesures prises à l'équerre ou au compas sont les bonnes.
           </p>
           <p>
-            Zoom à la molette, au pincement à deux doigts, par les boutons −/100 %/+, ou par
-            les ajustements <b>Largeur</b> et <b>Hauteur</b> de page.
+            <b>Largeur</b>, <b>Hauteur</b> et le pourcentage de zoom sont dans la barre du haut,
+            à côté d'Enregistrer. On zoome aussi à la molette, au pincement, ou par les boutons − et +.
           </p>
           <div class="tags"><span class="tag k">W</span><span class="tag">pleine largeur</span><span class="tag k">0</span><span class="tag">zoom 100 %</span></div>
         </div>
@@ -665,26 +721,38 @@
         puis rendues typographiquement.
       </p>
       <div class="grid">
-        <div class="card" data-k="texte enrichi police taille couleur gras italique souligne exposant indice liste puce alignement fond lien">
+        <div class="card" data-k="texte enrichi police ordinateur taille couleur mot gras italique souligne exposant indice liste puce alignement couleur fond lien barre">
           <h3><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></span>Texte enrichi</h3>
           <p>
-            Un clic avec l'outil Texte pose le curseur à l'endroit exact et ouvre toute la
-            barre de mise en forme, champ déjà actif. Un bloc laissé vide disparaît.
+            Un clic avec l'outil Texte pose le bloc à l'endroit exact. La barre de mise en
+            forme s'ouvre <b>sous la barre du haut</b> : elle ne passe jamais devant un onglet
+            ni devant le champ Lien. Le texte reste collé à la page quand on la déplace ou qu'on zoome.
           </p>
           <ul>
-            <li>Quatre familles : Sans, Serif, Mono, Titre</li>
-            <li>Taille de 3 à 72 mm, avec boutons A− / A+</li>
-            <li>Gras, italique, souligné, <b>exposant et indice réels</b> sur n'importe quelle lettre</li>
-            <li>Alignement, listes à puces ou numérotées, couleur de fond</li>
-            <li>Largeur de bloc réglable (retour à la ligne) et calques avancer / reculer</li>
-            <li><b>Lien cliquable</b> : exporté comme vraie annotation de lien dans le PDF</li>
+            <li><b>Un clic</b> propose Déplacer, Dupliquer, Couleur et Supprimer. <b>Un double clic</b> modifie le texte</li>
+            <li>La couleur peut viser <b>un seul mot</b>. La dernière couleur est reprise, et une couleur par défaut se définit dans la barre</li>
+            <li>Familles GEOBOARD : Sans, Serif, Mono, Titre, plus les <b>polices de l'ordinateur</b></li>
+            <li>Dans les réglages, le professeur choisit la <b>taille des icônes</b> de cette barre : Normale, Grande ou Très grande</li>
+            <li>Taille de 3 à 72 mm, avec boutons A− / A+, gras, italique, souligné, exposant et indice</li>
+            <li>Alignement, listes à puces ou numérotées</li>
+            <li><b>Couleur fond</b> : Aucun, toute la palette, ou une couleur libre</li>
+            <li>Largeur de bloc réglable et calques Avancer / Reculer</li>
+            <li>Le <b>lien</b> reste sur sa propre ligne. Il est exporté comme lien cliquable dans le PDF</li>
+            <li>Un bloc laissé vide disparaît quand on change d'outil</li>
           </ul>
+          <figure class="shot">
+            <a href="img/text-bar.png" target="_blank" rel="noopener">
+              <img src="img/text-bar.png" alt="La barre de texte sous la barre du haut : Texte, mise en forme, couleur, couleur de fond et le champ Lien sur sa propre ligne" />
+            </a>
+            <figcaption>La barre de texte, avec le champ Lien qui reste sur sa ligne.</figcaption>
+          </figure>
         </div>
         <div class="card" data-k="formule latex katex fraction racine puissance angle vecteur limite somme integrale matrice systeme">
           <h3><span class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h8l-5 16M4 12h7"/><path d="M16 9l5 6M21 9l-5 6"/></svg></span>Écriture mathématique</h3>
           <p>
-            Le composeur affiche la formule en direct pendant la frappe. La palette est
-            rangée en six familles dépliables, une seule ouverte à la fois :
+            La formule se tape dans le champ <b>Formule</b> de la barre, et son rendu reste
+            sur la page, à l'endroit du clic, même pendant un zoom. La palette est
+            rangée en six familles, une seule ouverte à la fois :
           </p>
           <ul>
             <li><b>Fractions &amp; racines</b> — fraction, racine carrée, racine n-ième, fraction composée, %</li>
@@ -696,17 +764,16 @@
           </ul>
           <figure class="shot">
             <a href="img/math.png" target="_blank" rel="noopener">
-              <img src="img/math.png" alt="Le composeur mathématique : famille Géométrie dépliée, formule LaTeX saisie et son rendu en dessous" />
+              <img src="img/math.png" alt="La barre de formule : famille Géométrie ouverte, champ Formule, et le rendu sur la page" />
             </a>
-            <figcaption>La formule tapée en haut, son rendu en dessous, la taille et la couleur en bas.</figcaption>
+            <figcaption>Le champ Formule dans la barre, le rendu sur la page, et les familles de symboles.</figcaption>
           </figure>
           <div class="tags"><span class="tag k">Ctrl+Entrée</span><span class="tag">valider la formule</span></div>
         </div>
       </div>
       <div class="note">
-        <b>À l'export</b> : les formules ne partent jamais en code source. Elles sont rendues
-        en vraies lettres mathématiques avant d'être posées dans le PDF, donc l'élève voit
-        la formule, pas du LaTeX.
+        <b>À l'export</b> : le PDF reprend le texte avec ses espaces, et les formules telles
+        qu'elles apparaissent à l'écran, lettres alignées. L'élève voit la formule, pas le code.
       </div>
     </section>
 
@@ -757,13 +824,13 @@
           <h3><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Le widget</h3>
           <figure class="shot tall">
             <a href="img/clock.png" target="_blank" rel="noopener">
-              <img src="img/clock.png" alt="Le widget horloge flottant avec son cadran à aiguilles et les onglets Horloge, Chrono et Décompte" />
+              <img src="img/clock.png" alt="Le widget horloge : cadran avec les chiffres de 1 à 12, aiguilles, et les onglets Horloge, Digital, Chrono et Minuteur" />
             </a>
           </figure>
         </div>
         <div class="card" data-k="horloge analogique aiguilles lecture heure ce1 ce2">
           <h3><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Horloge à aiguilles</h3>
-          <p>Cadran dessiné en vectoriel, net à toutes les tailles — pratique pour travailler la lecture de l'heure.</p>
+          <p>Cadran avec les <b>chiffres de 1 à 12</b>, net à toutes les tailles — pratique pour travailler la lecture de l'heure.</p>
         </div>
         <div class="card" data-k="horloge digitale numerique heure affichage">
           <h3><span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M7 10v4M11 12h2M17 10v4"/></svg></span>Horloge numérique</h3>
@@ -881,7 +948,7 @@
         <div class="card" data-k="ajouter page blanche dupliquer reordonner glisser deposer monter descendre supprimer">
           <h3><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg></span>Organiser le cahier</h3>
           <ul>
-            <li><b>Ajouter</b> une page blanche au format de la page courante</li>
+            <li><b>Ajouter</b> une page blanche juste après la page en cours. Si la page affichée fait partie d'un PDF, la feuille blanche se place après tout le PDF</li>
             <li><b>Dupliquer</b> une page avec toutes ses annotations</li>
             <li><b>Réorganiser</b> par glisser-déposer ou par les boutons monter / descendre : les annotations suivent leur page</li>
             <li><b>Supprimer</b> une page (la dernière page restante est protégée)</li>
@@ -919,7 +986,8 @@
         <div class="card" data-k="importer pdf exercice sujet annoter taille physique reelle a4 calques polices">
           <h3><span class="ico"><svg viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7z"/><path d="M14 2v5h6M12 18v-6M9 15l3-3 3 3"/></svg></span>Importer</h3>
           <p>
-            Le sujet ou l'exercice arrive à sa <b>taille physique exacte</b> (une page A4 fait
+            Depuis l'accueil, la carte <b>Importer un PDF</b> ouvre le sujet tout de suite.
+            Il arrive à sa <b>taille physique exacte</b> (une page A4 fait
             210 × 297 mm), une page à la fois, et le document prend le nom du PDF.
           </p>
           <ul>
@@ -935,9 +1003,11 @@
             et distribuable comme corrigé.
           </p>
           <ul>
-            <li>Les traits et les figures sont écrits en <b>vectoriel</b>, pas en capture d'écran</li>
+            <li>Le trait de crayon est <b>lisse</b>, comme à l'écran, et les figures restent nettes</li>
+            <li>Le texte garde ses espaces et son alignement. Les formules sont celles de la page</li>
             <li>Toutes les pages sont présentes, y compris les feuilles blanches ajoutées</li>
-            <li>Surlignage en transparence, images recadrées, liens cliquables, formules en vraies lettres</li>
+            <li>Surlignage en transparence, images recadrées, liens cliquables</li>
+            <li>Si un fichier du même nom existe déjà, <b>Remplacer</b> écrase l'ancien PDF</li>
           </ul>
         </div>
       </div>
@@ -1032,6 +1102,11 @@
             <td>Activés / désactivés</td>
             <td>Allège la barre d'outils si deux crayons suffisent. Les crayons 1 et 2 sont toujours présents.</td>
           </tr>
+          <tr>
+            <td><b>Icônes de la barre de texte</b></td>
+            <td>Normale · Grande · Très grande</td>
+            <td>Agrandit les boutons de la barre de texte et de formule, pour un tableau vu de loin.</td>
+          </tr>
         </tbody>
       </table>
 
@@ -1048,7 +1123,7 @@
           <tr><td><b>Forme, trait et remplissage</b></td><td>Barre d'outils, icône formes</td><td>6 figures · plein ou pointillés · intérieur vide ou coloré</td></tr>
           <tr><td><b>Format de la planche</b></td><td>Navigateur de pages</td><td>Feuille A4 / Page infinie</td></tr>
           <tr><td><b>Fond de planche</b></td><td>Navigateur de pages</td><td>6 couleurs · uni / quadrillage / lignée</td></tr>
-          <tr><td><b>Zoom</b></td><td>Navigateur de pages</td><td>− / 100 % / + · ajuster Largeur ou Hauteur</td></tr>
+          <tr><td><b>Zoom, Largeur, Hauteur</b></td><td>Barre du haut, à côté d'Enregistrer</td><td>− / pourcentage / + · ajuster la page en largeur ou en hauteur</td></tr>
           <tr><td><b>Position du navigateur de pages</b></td><td>Poignée de déplacement</td><td>N'importe où à l'écran · double-clic pour réinitialiser</td></tr>
         </tbody>
       </table>
@@ -1082,9 +1157,9 @@
         </tbody>
       </table>
       <div class="note">
-        <b>Souris et tactile</b> : molette pour zoomer, <kbd>Ctrl</kbd>+molette pour zoomer plus vite,
-        pincement à deux doigts pour zoomer et se déplacer, glisser sur une zone vide pour
-        faire défiler la feuille.
+        <b>Souris et trackpad</b> : la molette zoome. Sur le trackpad du Mac, deux doigts
+        font défiler la page et le pincement zoome. Sur l'écran tactile, le pincement zoome
+        aussi. Glisser sur une zone vide avec l'outil Sélectionner déplace la feuille.
       </div>
     </section>
 
@@ -1129,6 +1204,36 @@
       </div>
     </section>
 
+    <section id="confidentialite">
+      <h2>Règlement de confidentialité</h2>
+      <p class="intro">
+        GEOBOARD ne prend aucune information personnelle. Il n'y a pas de compte,
+        et rien de ce que vous écrivez n'est envoyé à l'éditeur.
+      </p>
+      <div class="grid">
+        <div class="card" data-k="confidentialite vie privee donnees personnelles compte aucune collecte">
+          <h3>Aucune donnée personnelle</h3>
+          <ul>
+            <li>Pas de nom, pas d'adresse e-mail, pas de compte à créer</li>
+            <li>Pas de publicité et pas de suivi de l'utilisation</li>
+            <li>Aucune information n'est transmise à un serveur</li>
+          </ul>
+        </div>
+        <div class="card" data-k="confidentialite documents fichiers geoboard pdf appareil hors ligne reglages">
+          <h3>Ce qui reste sur l'appareil</h3>
+          <ul>
+            <li>Les documents <code>.geoboard</code> et les PDF restent là où vous les enregistrez</li>
+            <li>Les réglages (crayons, barre d'outils, icônes) restent sur l'appareil</li>
+            <li>L'application fonctionne hors ligne</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">
+        Un fichier ne quitte l'appareil que si vous l'enregistrez, l'exportez ou le partagez
+        vous-même. GEOBOARD est édité par Jonathan VALENZANO. Règlement du 8 novembre 2026.
+      </div>
+    </section>
+
     <p class="empty hidden" id="noresult">Aucune fonctionnalité ne correspond à cette recherche.</p>
 
   </main>
@@ -1137,6 +1242,7 @@
 <footer>
   <p><strong>GEOBOARD</strong> — application créée par <strong>Jonathan VALENZANO</strong>.</p>
   <p>Tableau blanc interactif et logiciel de document pour l'enseignement des mathématiques.</p>
+  <p><a href="#confidentialite">Règlement de confidentialité</a></p>
 </footer>
 
 <script>
